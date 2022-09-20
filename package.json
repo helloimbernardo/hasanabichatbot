@@ -1,0 +1,19 @@
+{
+  "name": "hasanabichatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "helloimbernardo",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "tmi.js": "^1.8.5",
+    "twitter-api-v2": "^1.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
