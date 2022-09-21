@@ -1,7 +1,7 @@
 // Dependecies
-require('dotenv').config()
 const tmi = require("tmi.js");
 const twitterClient = require('./twitterClient.js');
+const accessSecret = require('./secrets.js');
 
 // Streamers JSON List
 const streamerList = require('./streamerList.json').map((streamer) => streamer.toLowerCase());
@@ -9,10 +9,10 @@ const streamerList = require('./streamerList.json').map((streamer) => streamer.t
 //-- -- actual code -- --
 
 const twitchClient = new tmi.client({
-    // identity: {
-    //     username: process.env.TWITCH_BOT_USERNAME,
-    //     password: process.env.TWITCH_OAUTH_TOKEN,
-    // },
+    identity: {
+        username: await accessSecret('TWITCH_BOT_USERNAME'),
+        password: await accessSecret('TWITCH_OAUTH_TOKEN'),
+    },
     channels: ["hasanabi"],
 });
 
