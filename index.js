@@ -1,7 +1,7 @@
 // Dependecies
 require('dotenv').config()
 const tmi = require("tmi.js");
-const twitterClient = require('./twitterClient.js');
+const {twitterClient, tweet, sendDM, dmSelf} = require('./twitterClient.js');
 
 // Streamers JSON List
 const streamerList = require('./streamerList.json').map((streamer) => streamer.toLowerCase());
@@ -21,14 +21,6 @@ twitchClient.on("connected", onConnectedHandler);
 twitchClient.on("raided", onRaidHandler);
 
 twitchClient.connect();
-
-const tweet = async (text) => {
-  try {
-      await twitterClient.v2.tweet(text);
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 function onMessageHandler(target, context, msg, self) {
     let message = {
@@ -51,4 +43,5 @@ function onRaidHandler(channel, username, viewers) {
 
 function onConnectedHandler(addr, port) {
     console.log(`%c * Connected to ${addr}:${port}`, "background-color: green; color: white;");
+    dmSelf(`* Connected to ${addr}:${port}`);
 }
