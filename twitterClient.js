@@ -15,7 +15,7 @@ const Client = new TwitterApi({
  */
 const tweet = async (text) => {
     try {
-        await twitterClient.v2.tweet(text);
+        await Client.v2.tweet(text);
     } catch (error) {
         console.log(error);
     }
@@ -30,7 +30,7 @@ const tweet = async (text) => {
 const sendDM = async (recipientId, text) => {
     try {
         await Client.v1.sendDm({
-            recipientId: recipientId,
+            recipient_id: recipientId,
             text: text,
         });
     } catch (error) {
